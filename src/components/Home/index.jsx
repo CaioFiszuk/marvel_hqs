@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Container } from './styles';
 import { getHqs } from "../../utils/marvelApi";
 
 function Home() {
@@ -17,29 +18,29 @@ function Home() {
      getHqsFromApi();
   }, [page]);
   return (
-    <main>
-       <ul>
+    <Container>
+       <ul className="main__list">
         {
           hqs.map((hq)=>(
-            <li key={hq.id}>
-              <h3>{hq.title}</h3>
-              <img src={`${hq.thumbnail.path}.${hq.thumbnail.extension}`}/>
-              <p>Preço: {hq.prices[0]?.price || 'N/A'}</p>
+            <li key={hq.id} className="main__item">
+              <h2 className="main__item-title">{hq.title}</h2>
+              <img src={`${hq.thumbnail.path}.${hq.thumbnail.extension}`} className="main__item-image"/>
+              <p className="main__item-price"><strong>Preço: {hq.prices[0]?.price || 'N/A'}</strong></p>
             </li>
          ))
         }
        </ul>
 
-        <div>
-        <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page === 1}>
+      <div className="main__paginate-buttons">
+        <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page === 1} className="main__paginate-button">
           Anterior
         </button>
-        <span>Página {page} de {totalPages}</span>
-        <button onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} disabled={page === totalPages}>
+        <span className="main__paginate-info">Página {page} de {totalPages}</span>
+        <button onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} disabled={page === totalPages} className="main__paginate-button">
           Próxima
         </button>
       </div>
-    </main>
+    </Container>
   );
 }
 

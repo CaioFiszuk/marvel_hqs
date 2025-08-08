@@ -1,9 +1,10 @@
+import { Container } from './styles';
 function Footer() {
 
   return (
-    <footer>
-        &copy; created by Caio Lopes
-    </footer>
+    <Container>
+      <p>&copy; created by Caio Lopes</p>
+    </Container>
   );
 }
 
