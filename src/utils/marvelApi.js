@@ -24,8 +24,13 @@ export const getHqs = async (page = 1, limit = 20) => {
 }
 
 export const getHqById = async (id) => {
+  try {
   const response = await axios.get(`${urlBase}/${id}`, {
     params: { apikey: publicKey }
   });
   return response.data.data.results[0];
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
