@@ -8,11 +8,27 @@ export const Container = styled.header`
   color: white;
   padding: 30px;
   width: 100%;
+  position: relative;
 
   .header__title {
     font-size: 60px;
     color: yellow;
     cursor: pointer;
+  }
+
+  .header__cart-length {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    background-color: red;
+  }
+
+  .header__link {
+   text-decoration: none;
+  }
+
+  .header__link-cart {
+   color: white;
   }
 
   .header__cart {
@@ -30,11 +46,19 @@ export const Container = styled.header`
     .header__title {
       font-size: 40px;
     }
+
+    .header__cart-length {
+      top: 20px;
+    }
   }
 
   @media screen and (min-width: 361px) and (max-width: 513px) {
      .header__title {
       font-size: 30px;
+    }
+
+    .header__cart-length {
+      top: 15px;
     }
   }
 
@@ -44,8 +68,12 @@ export const Container = styled.header`
     }
 
     .header__cart {
-     width: 20px;
-     height: 20px;
+     width: 25px;
+     height: 25px;
+    }
+
+    .header__cart-length {
+      top: 15px;
     }
   }
 `;

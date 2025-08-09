@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Container } from './styles';
+import Button from '../Button/index';
 import { getHqById } from '../../utils/marvelApi';
 import NotFound from '../NotFound';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../store/cartSlice'; 
 
 function Info() {
     const location = useLocation();
     const { id } = useParams();
     const [hq, setHq] = useState(location.state?.hq || null);
     const [loading, setLoading] = useState(!location.state?.hq);
+    const dispatch = useDispatch();
 
     useEffect(() => {
     if (!hq) {
@@ -28,7 +32,7 @@ function Info() {
     <Container>
          {
             hq && (
-                <div className='info-page'>
+                <section className='info-page'>
                    <h2 className='info-page__title'>{hq.title}</h2>
                    <img src={`${hq.thumbnail.path}.${hq.thumbnail.extension}`} className="info-page__image"/>
                    <p className='info-page__description'>{hq.description || "Sem descrição disponível"}</p>
@@ -43,7 +47,19 @@ function Info() {
                     </ul>
                     )}
                    <p className="info-page__price"><strong>Preço: {hq.prices[0]?.price || 'N/A'}</strong></p>
-                </div>
+
+                   <Button onClick={() => {
+                      dispatch(addItem({
+                                  id: hq.id,
+                                  title: hq.title,
+                                  price: hq.prices[0]?.price || 0,
+                                  thumbnail: hq.thumbnail.path,
+                                  extension: hq.thumbnail.extension
+                              }));      
+                    }}>
+                    Adicionar ao carrinho
+                   </Button>
+                </section>
             )
          }
     </Container>
