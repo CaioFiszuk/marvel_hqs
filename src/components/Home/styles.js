@@ -19,12 +19,17 @@ export const Container = styled.main`
     text-align: center;
     font-size: 30px;
     line-height: 35px;
-    margin: 20px 0;
+    margin: 40px 0 20px;
   }
 
   .main__item-price {
    font-size: 20px;
    margin-top: 10px;
+  }
+
+  .main__item-link {
+    padding-top: 10px;
+    font-size: 20px;
   }
 
   .main__paginate-buttons {
@@ -67,6 +72,10 @@ export const Container = styled.main`
    .main__item-price {
     font-size: 15px;
    }
+
+    .main__item-link {
+      font-size: 15px;
+    }
 
   }
 

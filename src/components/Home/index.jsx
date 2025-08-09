@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { Container } from './styles';
-import { getHqs } from "../../utils/marvelApi";
+import { getHqs } from '../../utils/marvelApi';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [hqs, setHqs] = useState([]);
@@ -26,6 +27,9 @@ function Home() {
               <h2 className="main__item-title">{hq.title}</h2>
               <img src={`${hq.thumbnail.path}.${hq.thumbnail.extension}`} className="main__item-image"/>
               <p className="main__item-price"><strong>Preço: {hq.prices[0]?.price || 'N/A'}</strong></p>
+              <Link to={`/info/${hq.id}`} state={{hq}} className='main__item-link'>
+                Ver informações
+              </Link>
             </li>
          ))
         }
