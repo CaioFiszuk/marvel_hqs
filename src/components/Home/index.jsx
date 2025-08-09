@@ -52,7 +52,8 @@ function Home() {
                             thumbnail: hq.thumbnail.path,
                             extension: hq.thumbnail.extension
                         }));      
-              }}>
+              }}
+              >
                 Adicionar ao carrinho
               </Button>
 
@@ -61,7 +62,7 @@ function Home() {
         }
        </ul>
 
-      <div className="main__paginate-buttons">
+      <section className="main__paginate-buttons">
         <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page === 1} className="main__paginate-button">
           Anterior
         </button>
@@ -69,7 +70,7 @@ function Home() {
         <button onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} disabled={page === totalPages} className="main__paginate-button">
           Próxima
         </button>
-      </div>
+      </section>
     </Container>
   );
 }

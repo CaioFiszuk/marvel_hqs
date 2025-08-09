@@ -31,8 +31,14 @@ function Cart() {
               <img src={`${item.thumbnail}.${item.extension}`} alt={item.title} className='cart__item__image'/>
               <p className='cart__item__title'>{item.title}</p>
               <p>R${item.unitPrice.toFixed(2)} - x{item.quantity}</p>
-              <p>Total: R${(item.quantity * item.unitPrice).toFixed(2)}</p>
-              <Button onClick={()=>dispatch(removeItem(item.id))}>Remover item</Button>
+              <p data-cy="total-price">Total: R${(item.quantity * item.unitPrice).toFixed(2)}</p>
+              <Button 
+                onClick={()=>dispatch(removeItem(item.id))}
+                data-cy="remove-item-btn"
+                className="remove"
+                >
+                  Remover item
+                </Button>
             </li>
           ))}
         </ul>
@@ -41,7 +47,13 @@ function Cart() {
         <p className='cart__total-price'><strong>Total: R$ ${totalPrice}</strong></p>
 
         <section className='cart__buttons'>
-          <Button onClick={()=>dispatch(clearCart(items))}>Limpar carrinho</Button>
+          <Button 
+            onClick={()=>dispatch(clearCart(items))}
+            data-cy="reset-item-btn"
+            className="reset"
+          >
+            Limpar carrinho
+          </Button>
           <Button>Efetuar a compra</Button>
         </section>
     </Container>

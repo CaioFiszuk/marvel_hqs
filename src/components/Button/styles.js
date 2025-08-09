@@ -9,6 +9,23 @@ export const Container = styled.button`
         font-size: 20px;
         cursor: pointer;
 
+        &.remove {
+          background-color: red;
+        }
+
+        &.remove:hover {
+          background-color: rgb(245, 75, 75);
+        }
+
+        &.reset {
+          background-color: gray;
+          color: black;
+        }
+
+        &.reset:hover {
+          background-color: rgb(200, 200, 200);
+        }
+
         &:hover {
           background-color: rgb(29, 29, 221);
         }
