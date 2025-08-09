@@ -59,6 +59,12 @@ export const Container = styled.main`
      background-color: rgba(177, 159, 235, 1);
   }
 
+  .main__error-message {
+    text-align: center;
+    font-size: 30px;
+    line-height: 35px;
+  }
+
   @media screen and (max-width: 779px) {
 
     .main__item-title {

@@ -32,7 +32,8 @@ function Home() {
     <Container>
        <ul className="main__list">
         {
-          hqs.map((hq)=>{
+          hqs.length > 0 ? (
+              hqs.map((hq)=>{
                const price = hq.prices[0]?.price || 0;
                if (price === 0) return null;
                return (
@@ -59,6 +60,9 @@ function Home() {
 
             </li>
          )})
+          ) : (
+            <p className="main__error-message">Nenhuma HQ encontrada</p>
+          )
         }
        </ul>
 
@@ -76,3 +80,34 @@ function Home() {
 }
 
 export default Home;
+
+/**
+ * 
+ * hqs.map((hq)=>{
+               const price = hq.prices[0]?.price || 0;
+               if (price === 0) return null;
+               return (
+              <li key={hq.id} className="main__item">
+              <h2 className="main__item-title">{hq.title}</h2>
+              <img src={`${hq.thumbnail.path}.${hq.thumbnail.extension}`} className="main__item-image"/>
+              <p className="main__item-price"><strong>Preço: {hq.prices[0]?.price}</strong></p>
+              <Link to={`/info/${hq.id}`} state={{hq}} className='main__item-link'>
+                Ver informações
+              </Link>
+
+              <Button onClick={() => {
+                dispatch(addItem({
+                            id: hq.id,
+                            title: hq.title,
+                            price: hq.prices[0]?.price || 0,
+                            thumbnail: hq.thumbnail.path,
+                            extension: hq.thumbnail.extension
+                        }));      
+              }}
+              >
+                Adicionar ao carrinho
+              </Button>
+
+            </li>
+         )})
+ */
